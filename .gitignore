@@ -1,3 +1,7 @@
+# db files 
+./static/db/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -5,7 +9,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+#mac os 
+.DS_Store
 # Distribution / packaging
 .Python
 build/

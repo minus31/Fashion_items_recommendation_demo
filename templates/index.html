@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>ProductWearing</title>
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+        <link href="../static/css/style.css" rel="stylesheet" type="text/css"
+    </head>
+
+    <body>
+        <!-- <div id="header" align="left">
+            <a href="index.html"><img src="../static/img/title_logo.png" alt="title-logo" id="logo_img"></a>
+        </div> -->
+        <div class="tab">
+          <button class="tablinks" onclick="openCity(event, 'part_form')" id="defaultOpen">PART</button>
+          <button class="tablinks" onclick="openCity(event, 'snapshot_form')">Snapshot</button>
+        </div>
+
+        <!-- tab == part -->
+        <form action="/predict_part/" method="POST" enctype="multipart/form-data" id="part_form" class="tabcontent">
+        <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <div class="file-upload">
+          <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+          <div class="image-upload-wrap">
+            <input class="file-upload-input" name='file' type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+              <h3>Drag and drop a file or select add Image</h3>
+            </div>
+          </div>
+
+          <div class="file-upload-content">
+            <img class="file-upload-image" src="#" alt="your image" />
+            <div class="image-title-wrap">
+              <!-- <button type="button" onclick="removeUpload()" class="remove-image"> Upload <span class="image-title">Uploaded Image</span></button> -->
+              <input type="submit" id="mobile-submit" class="upload-submit upload-image" value="Upload"/>
+            </div>
+          </div>
+        </div>
+        </div>
+        </form>
+
+        <!-- tab == snapshot -->
+        <form action="/predict_snapshot/" method="POST" enctype="multipart/form-data" id="snapshot_form" class="tabcontent">
+        <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <div class="file-upload">
+          <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+          <div class="image-upload-wrap">
+            <input class="file-upload-input" name='file' type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+              <h3>Drag and drop a file or select add Image</h3>
+            </div>
+          </div>
+
+          <div class="file-upload-content">
+            <img class="file-upload-image" src="#" alt="your image" />
+            <div class="image-title-wrap">
+              <!-- <button type="button" onclick="removeUpload()" class="remove-image"> Upload <span class="image-title">Uploaded Image</span></button> -->
+              <input type="submit" id="mobile-submit" class="upload-submit upload-image" value="Upload"/>
+            </div>
+          </div>
+        </div>
+        </div>
+        </form>
+
+        <script src="../static/js/script.js"></script>
+        <script>
+            function openCity(evt, cityName) {
+              let i, tabcontent, tablinks;
+              tabcontent = document.getElementsByClassName("tabcontent");
+              for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+              }
+              tablinks = document.getElementsByClassName("tablinks");
+              for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+              }
+              document.getElementById(cityName).style.display = "block";
+              evt.currentTarget.className += " active";
+            }
+
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
+        </script>
+    </body>
+</html>
