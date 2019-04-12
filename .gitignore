@@ -1,6 +1,6 @@
 # db files 
-./static/db/
-
+./static/db/db/*.png
+./static/db/snap/*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
