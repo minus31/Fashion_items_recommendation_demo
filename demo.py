@@ -8,8 +8,7 @@ import pickle
 import os
 
 from keras import backend as K
-from keras.applications.densenet import preprocess_input
-
+from keras.applications.resnet50 import preprocess_input
 from model import *
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'bmp', 'RAW', 'TIF'])
@@ -29,20 +28,27 @@ def preprocess(img):
 def get_feature(img):
 
     K.clear_session()
-    model = base_model((256,256,3), 600)
+    model = cgd_model((256,256,3), 600)
 
-    model.load_weights("./static/model_weight/50")
+    model.load_weights("./static/model_weight/10")
 
     img = preprocess(img)
 
     if len(img.shape) < 4:
         img = img[np.newaxis,:,:,:]
 
-    intermediate_model = Model(inputs=model.input, outputs=model.layers[-2].output)
+    intermediate_model = Model(inputs=model.input, outputs=model.layers[-3].output)
 
     feature = intermediate_model.predict(img)
     # feature - (1, 1024)
     return feature
+
+def l2_normalize(v, axis=-1):
+
+    norm = np.linalg.norm(v, axis=axis, keepdims=True)
+
+    return np.divide(v, norm, where=norm!=0)
+
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -59,8 +65,7 @@ def predict_part():
         img_name = secure_filename(f.filename)
         img_name = str(img_name)
 
-        db_path = './static/db/db'
-        reference_path = "./static/reference/"
+        db_path = './static/db/db/'
         upload_path = './static/upload/temp/'
         temp_path = os.path.join(upload_path, img_name)
 
@@ -68,8 +73,8 @@ def predict_part():
         img = cv2.imread(temp_path)
 
         # (1,1024)
-        feature = get_feature(img)
-
+        feature = l2_normalize(get_feature(img))
+        print(feature)
         with open("./static/reference/reference_part.p", "rb") as f:
             reference = pickle.load(f)
 
@@ -77,8 +82,9 @@ def predict_part():
         print(sim_vector.shape)
         indice = np.argsort(sim_vector.flatten())
         indice = list(np.flip(indice)[:9])
-
+        print(indice)
         sorted_img = [reference["img"][i] for i in indice]
+        print(sorted_img)
 
         sorted_img = [os.path.join(db_path, f) for f in sorted_img]
 
@@ -95,9 +101,7 @@ def predict_snap():
         img_name = secure_filename(f.filename)
         img_name = str(img_name)
 
-        # db_path = './static/db/db'
-        db_path = './static/db/snapshot'
-        reference_path = "./static/reference/"
+        db_path = './static/db/snap/'
         upload_path = './static/upload/temp/'
         temp_path = os.path.join(upload_path, img_name)
 
@@ -105,7 +109,7 @@ def predict_snap():
         img = cv2.imread(temp_path)
 
         # (1,1024)
-        feature = get_feature(img)
+        feature = l2_normalize(get_feature(img))
         with open("./static/reference/reference_snap.p", "rb") as f:
             reference = pickle.load(f)
 

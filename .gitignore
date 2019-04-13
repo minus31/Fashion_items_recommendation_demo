@@ -1,7 +1,11 @@
 # db files 
 ./static/db/db/*.png
 ./static/db/snap/*.png
-
+# image files
+*.png
+# model file 
+./static/model_weight/*
+/static/model_weight/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
