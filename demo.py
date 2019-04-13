@@ -30,7 +30,7 @@ def get_feature(img):
     K.clear_session()
     model = cgd_model((256,256,3), 600)
 
-    model.load_weights("./static/model_weight/10")
+    model.load_weights("./static/model_weight/0")
 
     img = preprocess(img)
 
