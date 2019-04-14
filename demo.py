@@ -124,5 +124,5 @@ def predict_snap():
         return render_template('result.html', origin_img=temp_path, result=sorted_img)
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0')
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
+    #app.run(debug=True)
