@@ -11,9 +11,6 @@
     </head>
 
     <body>
-        <!-- <div id="header" align="left">
-            <a href="index.html"><img src="../static/img/title_logo.png" alt="title-logo" id="logo_img"></a>
-        </div> -->
         <div class="tab">
           <button class="tablinks" onclick="openCity(event, 'part_form')" id="defaultOpen">PART</button>
           <button class="tablinks" onclick="openCity(event, 'snapshot_form')">Snapshot</button>
@@ -21,9 +18,9 @@
 
         <!-- tab == part -->
         <form action="/predict_part/" method="POST" enctype="multipart/form-data" id="part_form" class="tabcontent">
-        <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <div class="file-upload">
-          <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+          <!-- <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button> -->
+          <!-- <button class="file-upload-btn" type="button" onclick="console.log('sadgsgadsf:')">Add Image</button> -->
 
           <div class="image-upload-wrap">
             <input class="file-upload-input" name='file' type='file' onchange="readURL(this);" accept="image/*" />
@@ -35,7 +32,6 @@
           <div class="file-upload-content">
             <img class="file-upload-image" src="#" alt="your image" />
             <div class="image-title-wrap">
-              <!-- <button type="button" onclick="removeUpload()" class="remove-image"> Upload <span class="image-title">Uploaded Image</span></button> -->
               <input type="submit" id="mobile-submit" class="upload-submit upload-image" value="Upload"/>
             </div>
           </div>
@@ -44,11 +40,9 @@
         </form>
 
         <!-- tab == snapshot -->
-        <form action="/predict_snapshot/" method="POST" enctype="multipart/form-data" id="snapshot_form" class="tabcontent">
-        <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <form action="/predict_snap/" method="POST" enctype="multipart/form-data" id="snapshot_form" class="tabcontent">
         <div class="file-upload">
-          <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-
+          <!-- <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button> -->
           <div class="image-upload-wrap">
             <input class="file-upload-input" name='file' type='file' onchange="readURL(this);" accept="image/*" />
             <div class="drag-text">
@@ -67,7 +61,13 @@
         </div>
         </form>
 
+
+
+
+
+
         <script src="../static/js/script.js"></script>
+        <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script>
             function openCity(evt, cityName) {
               let i, tabcontent, tablinks;
@@ -77,7 +77,7 @@
               }
               tablinks = document.getElementsByClassName("tablinks");
               for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+                tablinks[i].className = tablinks[i].className.replace("active", "");
               }
               document.getElementById(cityName).style.display = "block";
               evt.currentTarget.className += " active";

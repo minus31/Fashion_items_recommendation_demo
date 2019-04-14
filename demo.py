@@ -30,7 +30,7 @@ def get_feature(img):
     K.clear_session()
     model = cgd_model((256,256,3), 600)
 
-    model.load_weights("./static/model_weight/0")
+    model.load_weights("./static/model_weight/40")
 
     img = preprocess(img)
 
@@ -91,7 +91,7 @@ def predict_part():
         return render_template('result.html', origin_img=temp_path, result=sorted_img)
 
 
-@application.route('/predict_snapshot/', methods=['GET', 'POST'])
+@application.route('/predict_snap/', methods=['GET', 'POST'])
 def predict_snap():
     if request.method == 'POST':
 
@@ -115,7 +115,7 @@ def predict_snap():
 
         sim_vector = np.dot(feature.reshape(-1, 1024), np.array(reference["feature"]).T)
         indice = np.argsort(sim_vector.flatten())
-        indice = np.flip(indice)[:9]
+        indice = list(np.flip(indice)[:9])
 
         sorted_img = [reference["img"][i] for i in indice]
 
