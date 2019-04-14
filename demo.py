@@ -81,7 +81,7 @@ def predict_part():
         sim_vector = np.dot(feature.reshape(-1, 1024), np.array(reference["feature"]).T)
         print(sim_vector.shape)
         indice = np.argsort(sim_vector.flatten())
-        indice = list(np.flip(indice)[:9])
+        indice = list(np.flip(indice)[:6])
         print(indice)
         sorted_img = [reference["img"][i] for i in indice]
         print(sorted_img)
@@ -115,7 +115,7 @@ def predict_snap():
 
         sim_vector = np.dot(feature.reshape(-1, 1024), np.array(reference["feature"]).T)
         indice = np.argsort(sim_vector.flatten())
-        indice = list(np.flip(indice)[:9])
+        indice = list(np.flip(indice)[:6])
 
         sorted_img = [reference["img"][i] for i in indice]
 
