@@ -29,5 +29,4 @@ tensorflow==1.13.1
 tensorflow-estimator==1.13.0
 gunicorn
 werkzeug
-pickle
 tornado==6.0.2
