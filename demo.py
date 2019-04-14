@@ -13,9 +13,9 @@ from model import *
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'bmp', 'RAW', 'TIF'])
 
-app = Flask(__name__)
-app.secret_key = 'dont tell anyone'
-app.config.update(
+application = Flask(__name__)
+application.secret_key = 'dont tell anyone'
+application.config.update(
     TEMPLATES_AUTO_RELOAD = True,
     MAX_CONTENT_LENGTH = 6 * 5000 * 5000,
 )
@@ -50,12 +50,12 @@ def l2_normalize(v, axis=-1):
     return np.divide(v, norm, where=norm!=0)
 
 
-@app.route("/", methods=['GET', 'POST'])
+@application.route("/", methods=['GET', 'POST'])
 def home():
     return render_template("index.html")
 
 
-@app.route('/predict_part/', methods=['GET', 'POST'])
+@application.route('/predict_part/', methods=['GET', 'POST'])
 def predict_part():
     if request.method == 'POST':
 
@@ -91,7 +91,7 @@ def predict_part():
         return render_template('result.html', origin_img=temp_path, result=sorted_img)
 
 
-@app.route('/predict_snapshot/', methods=['GET', 'POST'])
+@application.route('/predict_snapshot/', methods=['GET', 'POST'])
 def predict_snap():
     if request.method == 'POST':
 
@@ -124,5 +124,5 @@ def predict_snap():
         return render_template('result.html', origin_img=temp_path, result=sorted_img)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
-    #app.run(debug=True)
+    application.run(host='0.0.0.0')
+    #application.run(debug=True)
