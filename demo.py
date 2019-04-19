@@ -79,13 +79,9 @@ def predict_part():
             reference = pickle.load(f)
 
         sim_vector = np.dot(feature.reshape(-1, 1024), np.array(reference["feature"]).T)
-        print(sim_vector.shape)
         indice = np.argsort(sim_vector.flatten())
         indice = list(np.flip(indice)[:6])
-        print(indice)
         sorted_img = [reference["img"][i] for i in indice]
-        print(sorted_img)
-
         sorted_img = [os.path.join(db_path, f) for f in sorted_img]
 
         return render_template('result.html', origin_img=temp_path, result=sorted_img)
