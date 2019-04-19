@@ -30,7 +30,7 @@ def get_feature(img):
     K.clear_session()
     model = cgd_model((256,256,3), 600)
 
-    model.load_weights("./static/model_weight/40")
+    model.load_weights("./static/model_weight/130")
 
     img = preprocess(img)
 
@@ -65,7 +65,7 @@ def predict_part():
         img_name = secure_filename(f.filename)
         img_name = str(img_name)
 
-        db_path = './static/db/db/'
+        db_path = './static/db/part/part/'
         upload_path = './static/upload/temp/'
         temp_path = os.path.join(upload_path, img_name)
 
@@ -97,7 +97,7 @@ def predict_snap():
         img_name = secure_filename(f.filename)
         img_name = str(img_name)
 
-        db_path = './static/db/snap/'
+        db_path = './static/db/snap/snap/'
         upload_path = './static/upload/temp/'
         temp_path = os.path.join(upload_path, img_name)
 
