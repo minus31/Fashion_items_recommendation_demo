@@ -27,6 +27,6 @@ python-dateutil==2.8.0
 tensorboard==1.13.1
 tensorflow==1.13.1
 tensorflow-estimator==1.13.0
-gunicorn
+uwsgi
 werkzeug
 tornado==6.0.2
