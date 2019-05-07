@@ -50,32 +50,6 @@ form{
   padding: 20px;
 }
 
-.file-upload-btn {
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  background: #491a0b;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #724627;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.file-upload-btn:hover {
-  background: #a3482c;
-  color: #a3482c;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.file-upload-btn:active {
-  border: 0;
-  transition: all .2s ease;
-}
 
 .file-upload-content {
   display: none;
@@ -84,6 +58,7 @@ form{
 
 .file-upload-input {
   position: absolute;
+  display:block;
   margin: 0;
   padding: 0;
   width: 100%;
